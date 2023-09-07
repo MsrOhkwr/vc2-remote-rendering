@@ -2,6 +2,7 @@
 
 #define POW2(X) ((X) * (X))
 #define POW5(X) ((X) * (X) * (X) * (X) * (X))
+#define RAND_2POW32_INV (2.3283064e-10f)
 #define DEPTH_MAX (16)
 #define DELTA (0.01)
 #define PI (3.14159265359)
@@ -62,7 +63,7 @@ float rand() {
   xors[1] = xors[2];
   xors[2] = xors[3];
   xors[3] = (xors[3] ^ (xors[3] >> 19)) ^ (t ^ (t >> 8));
-  return xors[3] / 4294967295.0f;
+  return 1.0f - (xors[3] * RAND_2POW32_INV + (RAND_2POW32_INV / 2.0f));
 }
 
 // 球と光線の交点
