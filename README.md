@@ -13,12 +13,8 @@
 │   ├── glsl
 │   │   ├── fragment_shader.glsl
 │   │   └── vertex_shader.glsl
-│   ├── hdr
-│   │   └── museum_of_ethnography_1k.hdr
-│   ├── html
-│   │   └── index.html
-│   └── js
-│       └── session-manager.js
+│   └── hdr
+│       └── museum_of_ethnography_1k.hdr
 ├── colab
 │   ├── notebook.py
 │   ├── tunnel.py
@@ -27,6 +23,9 @@
 │   ├── Dockerfile
 │   ├── nginx.conf
 │   └── README.md
+├── docs
+│   ├── index.html
+│   └── session-manager.js
 ├── tests
 │   ├── data
 │   │   ├── reference.jpg
@@ -40,7 +39,7 @@
 ├── requirements_dev.txt
 └── requirements.txt
 
-10 directories, 23 files
+9 directories, 23 files
 ```
 
 各ファイルの内容を以下に示す：
@@ -65,14 +64,6 @@
 
   イメージベーストライティングに使用する環境マップを格納する．
 
-- assets/html/index.html
-
-  WebSocket サーバと通信する WEB ページ．
-
-- assets/js/session-manager.js
-
-  WebSocket サーバに対してリクエストを送信したり，レスポンスを受信するための処理が記述されている．
-
 - colab/notebook.py
 
   Google Colaboratory で実行可能なノートブックファイル (.ipynb) を生成するスクリプトが記述されている．
@@ -96,6 +87,14 @@
 - deploy/README.md
 
   デプロイ手順書．
+
+- docs/index.html
+
+  WebSocket サーバと通信する WEB ページ．
+
+- docs/session-manager.js
+
+  WebSocket サーバに対してリクエストを送信したり，レスポンスを受信するための処理が記述されている．
 
 - tests/
 
@@ -195,13 +194,18 @@ python app/server.py
 
 ## ブラウザからのアクセス
 
-`assets/html/index.html` をブラウザで開き，start ボタンを押下すると，レンダリングが開始される．
+`docs/index.html` をブラウザで開き，start ボタンを押下すると，レンダリングが開始される．
 
 画像領域にイベントリスナーが存在し，以下の挙動に対応している：
 - 左ボタンでドラッグするとカメラ回転
 - 右ボタンでドラッグするとカメラ移動
 
 deploy/README.md の手順に従って，ローカルホストにデモサイトをデプロイしてもよい．
+
+また，下記のサイトをデモサイトとして使用することもできる：
+
+- https://msrohkwr.github.io/vc2-remote-rendering/
+- https://demo-mafd.onrender.com/
 
 ## 開発者向け情報
 
