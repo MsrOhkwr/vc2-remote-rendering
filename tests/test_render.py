@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+from turbojpeg import TurboJPEG
 
 
 def test_create_context(ctx):
@@ -51,9 +52,7 @@ def get_mssim(src1, src2):
 
 def test_get_binary(ctx):
     reference = cv2.imread("tests/data/reference.jpg", cv2.IMREAD_COLOR)
-    rendered = cv2.imdecode(
-        np.frombuffer(ctx.get_binary(), dtype=np.uint8), cv2.IMREAD_COLOR
-    )
+    rendered = TurboJPEG().decode(np.frombuffer(ctx.get_binary(), dtype=np.uint8))
     mssim = get_mssim(reference, rendered)
 
     print("\nSSIM: " + str(mssim) + "\n")

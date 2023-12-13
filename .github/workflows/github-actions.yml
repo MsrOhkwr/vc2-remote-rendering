@@ -131,7 +131,7 @@ jobs:
       - run: python3 -m venv venv
       - name: Run pytest
         run: |
-          sudo apt-get install libegl1
+          sudo apt-get install libegl1 libturbojpeg
           . venv/bin/activate
           pip install -r requirements_dev.txt
           python -m moderngl
@@ -188,7 +188,11 @@ jobs:
         with:
           msystem: UCRT64
           release: false
-          install: mingw-w64-ucrt-x86_64-mesa
+          install: >-
+            mingw-w64-ucrt-x86_64-mesa
+            mingw-w64-ucrt-x86_64-libjpeg-turbo
+      - name: Add libturbojpeg to PATH
+        run: echo "C:/msys64/ucrt64/bin/libturbojpeg.dll" >> $GITHUB_PATH
       - run: python --version
       - name: Run pytest
         run: |

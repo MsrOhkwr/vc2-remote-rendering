@@ -2,4 +2,5 @@ glcontext==2.4.0
 moderngl==5.8.2
 numpy==1.25.2
 opencv-python==4.8.0.76
+PyTurboJPEG @ git+https://github.com/lilohuang/PyTurboJPEG.git@c9a4973ab48e1e3d421881f76d8b1b2a22669fd2
 websockets==11.0.3
