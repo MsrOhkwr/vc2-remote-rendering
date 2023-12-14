@@ -35,3 +35,6 @@ notebook-check:
 
 one-by-one-push:
 	python one_by_one_push.py
+
+reference:
+	python update_reference.py
