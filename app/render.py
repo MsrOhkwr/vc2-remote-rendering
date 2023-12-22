@@ -6,6 +6,7 @@ from string import Template
 import cv2
 import numpy as np
 import moderngl
+from turbojpeg import TurboJPEG
 
 
 class Context:
@@ -249,8 +250,8 @@ class Context:
     def get_binary(self):
         buffer = self.read_buffer(Context.ATTACHMENT_INDEX_OUTPUT_COLOR)
         buffer = np.flipud(buffer)
-        buffer = cv2.cvtColor(buffer, cv2.COLOR_RGBA2BGRA)
+        buffer = cv2.cvtColor(buffer, cv2.COLOR_RGBA2BGR)
         buffer = (buffer * 255).astype(np.uint8)
-        is_success, binary = cv2.imencode(".jpg", buffer)
+        binary = TurboJPEG().encode(buffer)
         with io.BytesIO(binary) as b:
             return b.getvalue()
